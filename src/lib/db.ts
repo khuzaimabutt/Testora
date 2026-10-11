@@ -1,13 +1,11 @@
-import { PrismaClient } from '@prisma/client/edge'
-import { withAccelerate } from '@prisma/extension-accelerate'
+import { PrismaClient } from '@prisma/client'
 
-// declare global {
-//   var prisma: PrismaClient | undefined;
-// }
+// Plain Prisma client over a Postgres connection (Supabase pooler).
+// Reused across hot reloads in development so connections do not pile up.
+const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient }
 
-// export const db = globalThis.prisma || new PrismaClient().$extends(withAccelerate());
-export const db = new PrismaClient().$extends(withAccelerate())
+export const db = globalForPrisma.prisma ?? new PrismaClient()
 
-// if (process.env.NODE_ENV !== "production") {
-//   globalThis.prisma = db;
-// }
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = db
+}
