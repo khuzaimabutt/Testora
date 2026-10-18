@@ -1,61 +1,68 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Footer from "@/components/layout/Footer";
-import Image from "next/image";
-export default async function About() {
-  const features = [
-    "Customizable mock tests",
-    "Instant grading and feedback",
-    "Progress tracking and analytics",
-    "Wide variety of subjects",
-    "User-friendly interface",
-    "Affordable pricing",
-    "Expert support",
-    "Community forums for discussion",
-  ];
-  return (
-    <section
-      className="grid lg:grid-cols-2 gap-10 w-full max-container "
-    >
-      <div className="flex-1 flex flex-col gap-6 lg:max-w-lg">
-        <h2 className="text-4xl font-semibold font-palanquin capitalize">
-          Empower Your Exam Preparation with
-          <span className="text-primary"> Certi - Ai </span>
-           
-        </h2>
-        <p className="text-gray-500">
-          At <strong>Cert-Ai</strong>, we believe that practice makes perfect.
-          We offer a dynamic online environment where students can sharpen their
-          skills and prepare for their exams with confidence. Our platform
-          allows teachers to create and upload custom tests, which students can
-          then purchase and practice at their own pace. Whether you&apos;re gearing
-          up for midterms, finals, or standardized tests, our comprehensive test
-          bank is tailored to meet your needs.
-        </p>
-        <p className="mt-4 text-gray-500">
-          For educators, our platform provides a versatile tool to support your
-          teaching goals. Upload tests, track student progress, and offer
-          targeted feedback—all from one intuitive interface.
-        </p>
+import { BarChart3, FilePenLine, Sparkles, Timer, Wallet, ListChecks } from "lucide-react";
 
-        <p className="mt-4  text-gray-500">
-          Join us today and transform how you prepare for your exams—because
-          when you practice with purpose, you succeed with confidence.
-        </p>
-        <div className="mb-4">
-          <Button>Join us Now</Button>
+const teacher = [
+  { icon: FilePenLine, title: "Write or upload", body: "Build a test question by question, MCQ, true or false and descriptive, or import a spreadsheet." },
+  { icon: Sparkles, title: "Draft with AI", body: "Describe the topic and level, then review and edit the questions the assistant drafts." },
+  { icon: Wallet, title: "Publish and price", body: "Set a start date, a duration and a price. Students pay securely through Stripe." },
+];
+const student = [
+  { icon: ListChecks, title: "Pick a test", body: "Browse published tests by instructor, read the brief, and buy the ones you need." },
+  { icon: Timer, title: "Sit it timed", body: "Answer against the clock on any screen, with progress shown as you go." },
+  { icon: BarChart3, title: "Learn from marking", body: "See your score, the correct answers and an explanation for every question you missed." },
+];
+
+function Column({ label, heading, items }: { label: string; heading: string; items: typeof teacher }) {
+  return (
+    <div className="surface p-6 sm:p-8">
+      <p className="eyebrow">{label}</p>
+      <h3 className="mt-2 text-2xl font-semibold">{heading}</h3>
+      <ol className="mt-8 space-y-7">
+        {items.map(({ icon: Icon, title, body }, i) => (
+          <li key={title} className="grid grid-cols-[auto_1fr] gap-4">
+            <span className="relative grid h-11 w-11 place-items-center rounded-xl border bg-background">
+              <Icon className="h-5 w-5" aria-hidden />
+              <span className="absolute -right-2 -top-2 grid h-5 w-5 place-items-center rounded-full bg-mark font-mono text-[10px] font-semibold text-mark-foreground">
+                {i + 1}
+              </span>
+            </span>
+            <div>
+              <p className="font-semibold">{title}</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+export default async function About() {
+  return (
+    <div className="mx-auto max-w-6xl">
+      <div id="how-it-works" className="grid scroll-mt-24 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div>
+          <p className="eyebrow">How it works</p>
+          <h2 className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
+            One platform, <span className="italic">two sides of the desk.</span>
+          </h2>
         </div>
+        <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
+          CertiAI gives teachers a place to author and sell practice tests, and gives students a calm, timed place to sit them and learn from the marking.
+        </p>
       </div>
-      <div className="flex justify-center">
-        <Image
-          src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="quality"
-          height={522}
-          width={570}
-          className="rounded-xl h-full w-full"
-        />
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <Column label="For teachers" heading="Set the paper" items={teacher} />
+        <Column label="For students" heading="Sit the paper" items={student} />
       </div>
-    </section>
+      <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-primary px-6 py-6 text-primary-foreground sm:flex-row sm:items-center sm:px-8">
+        <p className="font-display text-xl">Choose your role when you sign up, then start building or practising straight away.</p>
+        <Button asChild variant="secondary" size="lg" className="shrink-0">
+          <Link href="/sign-up">Join CertiAI</Link>
+        </Button>
+      </div>
+    </div>
   );
 }
