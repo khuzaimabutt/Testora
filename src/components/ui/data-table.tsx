@@ -105,7 +105,7 @@ export function DataTable<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="overflow-hidden rounded-2xl border bg-card">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -146,9 +146,13 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-48 text-center"
                 >
-                  No results.
+                  <div className="mx-auto flex max-w-xs flex-col items-center gap-2 py-6">
+                    <span aria-hidden className="grid h-11 w-11 place-items-center rounded-full border border-dashed border-input font-mono text-sm text-muted-foreground">0</span>
+                    <p className="font-display text-base font-semibold text-foreground">Nothing recorded yet</p>
+                    <p className="text-sm text-muted-foreground">Rows appear here as soon as the first records come in.</p>
+                  </div>
                 </TableCell>
               </TableRow>
             )}
