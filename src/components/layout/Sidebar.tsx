@@ -140,7 +140,7 @@ const SidebarContent = ({ role, userId }: { role: string; userId: string }) => {
   // ];
   return (
     <div>
-      <div className=" h-20 mx-auto">
+      <div className="h-12 mx-auto">
         <Image
           src="https://i.postimg.cc/nLFKWJ5z/Rectangle-1.png"
           alt="Logo"
@@ -256,7 +256,7 @@ const Sidebar =  ({ role, userId }: { role: string; userId: string }) => {
             height={300}
           />
           <Package2 className="h-6 w-6 sr-only" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">CertiAI</span>
         </Link>
         </div>
  
@@ -297,7 +297,7 @@ const Sidebar =  ({ role, userId }: { role: string; userId: string }) => {
                 height={77}
               />
               <Package2 className="h-6 w-6 sr-only" />
-              <span className="sr-only">Acme Inc</span>
+              <span className="sr-only">CertiAI</span>
             </Link>
             {filteredItems.map((item, index) => (
               <Link

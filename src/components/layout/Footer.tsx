@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="px-8 py-8 mt-20 bg-gradient-to-r from-violet-100 to-[#f6d1c5]">
       <div className="max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-8">
-        <div className="col-span-1 md:col-span-2">
+        <div className="col-span-2 md:col-span-2">
           <Image
             src="https://i.postimg.cc/nLFKWJ5z/Rectangle-1.png"
             alt="Company Logo"
@@ -17,8 +17,7 @@ const Footer = () => {
             height={100}
           />
           <p className="text-black-500 pt-4 md:mt-0 md:col-span-1 ">
-            CertiAI is an online mock test portal
-            Connecting teachers and students in Pakistan and beyond.
+            CertiAI is an online mock test portal. Connecting teachers and students in Pakistan and beyond.
           </p>
         </div>
         <div className="flex flex-wrap justify-between md:col-span-4 gap-8">

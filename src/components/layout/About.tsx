@@ -53,7 +53,7 @@ export default async function About() {
           alt="quality"
           height={522}
           width={570}
-          className="rounded-xl h-full w-full"
+          className="rounded-xl h-full w-full object-cover"
         />
       </div>
     </section>
