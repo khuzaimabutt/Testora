@@ -19,7 +19,7 @@ export default function loading() {
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
         {Array.from({ length: 6 }, (_, i) => (
-          <div key={i} className="animate-pulse">
+          <div key={i} className="">
             <Skeleton className="h-40 w-full rounded-md" />
           </div>
         ))}

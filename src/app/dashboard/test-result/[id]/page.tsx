@@ -3,6 +3,8 @@ import BotChat from "@/components/common/BotChat";
 import { Button } from "@/components/ui/button";
 import { Dot } from "lucide-react";
 import Link from "next/link";
+import CountUp from "@/components/motion/CountUp";
+import Celebrate from "@/components/motion/Celebrate";
 import React from "react";
 
 interface TestResultPageProps {
@@ -25,20 +27,24 @@ export default async function TestResultPage({ params }: TestResultPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="bg-white shadow-md rounded-md p-6 flex flex-col items-center">
+      <div className="relative bg-white shadow-md rounded-md p-6 flex flex-col items-center">
         <h2 className="text-xl font-semibold mb-4">Test Result</h2>
         <div className="flex flex-col space-y-2">
 
-          <div className="text-3xl font-bold">{`${totalCorrectAnswers}/${totalQuestions}`}</div>
+          <div className="text-3xl font-bold">
+            <CountUp value={`${totalCorrectAnswers}/${totalQuestions}`} />
+          </div>
 
           {totalCorrectAnswers / totalQuestions >= 0.7 && (
-            <span className="text-green-500 font-semibold">Passed!</span>
+            <span className="pass-pop text-green-500 font-semibold">Passed!</span>
           )}
           {totalCorrectAnswers / totalQuestions < 0.7 && (
             <span className="text-red-500 font-semibold">Failed</span>
           )}
         </div>
-
+        {totalQuestions > 0 && totalCorrectAnswers / totalQuestions >= 0.7 && (
+          <Celebrate />
+        )}
       </div>
 
       <div className="mt-8">

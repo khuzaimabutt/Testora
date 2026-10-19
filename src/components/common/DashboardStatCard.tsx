@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DollarSign } from "lucide-react";
+import CountUp from "@/components/motion/CountUp";
 
 interface CardItem {
   text: string;
@@ -29,7 +30,9 @@ export default function DashboardStatCard({
         </div>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold">{amount}</div>
+        <div className="text-2xl font-bold">
+          <CountUp value={amount} />
+        </div>
         <p className="text-xs text-muted-foreground">{percentage}</p>
       </CardContent>
     </Card>

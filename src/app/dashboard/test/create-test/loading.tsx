@@ -10,7 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function loading() {
   return (
-    <Card className="w-full animate-pulse">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>
           <Skeleton className="h-6 w-48 rounded-md" />

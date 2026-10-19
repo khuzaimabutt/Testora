@@ -170,7 +170,7 @@ const TestPage: React.FC<TestPageProps> = ({
               <ul className="list-none pl-0">
                 {questionData.options?.map((option, optionIndex) => (
                   <li key={optionIndex} className="mb-2">
-                    <label className="inline-flex items-center">
+                    <label className="answer-option inline-flex items-center">
                       <input
                         type="radio"
                         name={`question-${index}`}
@@ -193,7 +193,8 @@ const TestPage: React.FC<TestPageProps> = ({
               </ul>
             )}
             {questionData.type === "True/False" && (
-              <div className="flex space-x-2 items-center mb-2">
+              <div className="flex space-x-6 items-center mb-2">
+                <label className="answer-option inline-flex items-center space-x-2">
                 <input
                   type="radio"
                   name={`question-${index}`}
@@ -209,7 +210,9 @@ const TestPage: React.FC<TestPageProps> = ({
                     )
                   }
                 />
-                <span className="ml-2">True</span>
+                <span>True</span>
+                </label>
+                <label className="answer-option inline-flex items-center space-x-2">
                 <input
                   type="radio"
                   name={`question-${index}`}
@@ -226,7 +229,8 @@ const TestPage: React.FC<TestPageProps> = ({
                     )
                   }
                 />
-                <span className="ml-2">False</span>
+                <span>False</span>
+                </label>
               </div>
             )}
             {questionData.type === "Descriptive" && (
@@ -254,7 +258,7 @@ const TestPage: React.FC<TestPageProps> = ({
               time / 3600
             )} hr ${Math.floor((time % 3600) / 60)} min ${time % 60} sec`}</p>
             {testTime - time <= 300 && (
-              <p className="text-red-600 font-semibold">
+              <p className="time-pulse text-red-600 font-semibold">
                 {`Time left: ${Math.floor((testTime - time) / 60)}:${String(
                   (testTime - time) % 60
                 ).padStart(2, "0")}`}

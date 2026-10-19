@@ -6,7 +6,7 @@ export default function loading() {
     <div className="px-10">
       <Skeleton className="h-12 w-12 text-xl font-bold mb-4" />
       <div>
-        <Card className="flex max-md:flex-col animate-pulse">
+        <Card className="flex max-md:flex-col">
           <CardContent className="p-6">
             <Skeleton className="h-40 w-40 rounded-md" />
           </CardContent>
@@ -42,7 +42,7 @@ export default function loading() {
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
         {Array.from({ length: 6 }, (_, i) => (
-          <div key={i} className="animate-pulse">
+          <div key={i} className="">
             <Skeleton className="h-40 w-full rounded-md" />
           </div>
         ))}
