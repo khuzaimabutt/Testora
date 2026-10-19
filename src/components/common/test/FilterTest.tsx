@@ -9,7 +9,6 @@ import {
 import { Test } from "@/types/types";
 import { useMemo, useState } from "react";
 import TestCard from "../TestCard";
-import EmptyState from "../EmptyState";
 
 export default function FilterTest({
   role,
@@ -32,42 +31,24 @@ export default function FilterTest({
     );
   }, [tests, filter]);
 
-  const visibleCount = filteredTests.filter((t) => role !== "student" || t.published).length;
-
   return (
     <div className="mb-10">
-      <div className="my-4 flex items-center justify-between gap-4">
-        <p className="font-mono text-xs text-muted-foreground" aria-live="polite">
-          {visibleCount} {visibleCount === 1 ? "test" : "tests"}
-        </p>
+      <div className="flex justify-end my-4">
         {role === "instructor" && (
           <Select value={filter} onValueChange={setFilter}>
-            <SelectTrigger className="w-[180px]" aria-label="Filter tests by status">
+            <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All tests</SelectItem>
-              <SelectItem value="publish">Published</SelectItem>
-              <SelectItem value="unpublish">Drafts</SelectItem>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="publish">Publish</SelectItem>
+              <SelectItem value="unpublish">unpublish</SelectItem>
             </SelectContent>
           </Select>
         )}
       </div>
 
-      {visibleCount === 0 && (
-        <EmptyState
-          title={role === "instructor" ? (tests.length === 0 ? "Your first test starts here" : "No tests match this filter") : "No tests published yet"}
-          body={
-            role === "instructor"
-              ? tests.length === 0
-                ? "Create a test by hand or let AI draft one for you. Drafts stay private until you publish them."
-                : "Switch the filter to see your other tests."
-              : "When instructors publish practice tests they will appear here, ready to buy and sit."
-          }
-        />
-      )}
-
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
         {filteredTests?.map((test) => {
           if (role === "student" && !test.published) return;
           return (

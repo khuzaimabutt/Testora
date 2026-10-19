@@ -37,7 +37,7 @@ export default function ALertDialogModel({
   }
   return (
     <AlertDialog>
-      <AlertDialogTrigger aria-label={`Delete ${text}`} className="grid h-10 w-10 place-items-center rounded-[10px] text-destructive hover:bg-destructive/10">{icon}</AlertDialogTrigger>
+      <AlertDialogTrigger>{icon}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

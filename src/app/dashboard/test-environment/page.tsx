@@ -5,9 +5,6 @@ import TestCard from "@/components/common/TestCard";
 import { auth } from "@clerk/nextjs";
 import { notFound } from "next/navigation";
 import NotFound from "./not-found";
-import EmptyState from "@/components/common/EmptyState";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 interface Test {
   id: number;
@@ -55,26 +52,13 @@ export default async function TestEnvironmentPage() {
 
   return (
     <div>
-      <p className="eyebrow">Exam room</p>
-      <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">My tests</h1>
-      <p className="mt-2 max-w-xl text-muted-foreground">
-        Tests you have bought. A test can be started from its start date; the timer begins when you open it.
+      <h1 className="text-2xl font-semibold">Test List</h1>
+      <p className="text-gray-600 text-sm">
+        Here you can view all the tests you have purchaseds.
       </p>
 
-      {(!testList || testList.length === 0) && (
-        <EmptyState
-          className="mt-10"
-          title="No tests purchased yet"
-          body="Browse the published tests, buy the one you want to practise, and it will be waiting for you here."
-        >
-          <Button asChild>
-            <Link href="/dashboard/test">Browse tests</Link>
-          </Button>
-        </EmptyState>
-      )}
-
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {testList?.map((test) => (
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 mt-10">
+        {testList.map((test) => (
           <TestCard
             key={test.id}
             id={test.id}

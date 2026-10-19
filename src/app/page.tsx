@@ -6,20 +6,22 @@ import HomeNav from "@/components/layout/HomeNav";
 
 export default function Home() {
   return (
-    <>
-      <HomeNav />
-      <main id="main">
-        <section>
-          <Hero />
+    <main className="relative ">
+      <section>
+        <HomeNav />
+      </section>
+      <section className="pb-32 px-4">
+        <Hero />
+      </section>
+      <section id="about-us" className="sm:px-16 px-8 sm:py-24 py-12">
+        <About />
+      </section >
+      <section id='feature-test' className="sm:px-16 px-8 sm:py-24 py-12">
+        <FeatureTest />
         </section>
-        <section id="about-us" className="scroll-mt-16 border-t bg-secondary/40 px-4 py-20 sm:px-8 sm:py-28">
-          <About />
-        </section>
-        <section id="feature-test" className="scroll-mt-16 px-4 py-20 sm:px-8 sm:py-28">
-          <FeatureTest />
-        </section>
-      </main>
-      <Footer />
-    </>
+      <section>
+        <Footer />
+      </section>
+    </main>
   );
 }

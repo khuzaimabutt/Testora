@@ -1,33 +1,54 @@
+import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import Brand from "../common/Brand";
 
 export default function HomeNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-transparent bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-8">
-        <Brand />
-        <nav aria-label="Main" className="hidden items-center gap-8 sm:flex">
-          {[
-            ["How it works", "#how-it-works"],
-            ["Tests", "#feature-test"],
-            ["About", "#about-us"],
-          ].map(([label, href]) => (
-            <Link key={href} href={href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" className="hidden sm:inline-flex">
-            <Link href="/sign-in">Log in</Link>
-          </Button>
+    <div className="pl-0 px-8 z-50 absolute xl:w-1/2 w-full">
+      <div className="flex items-center justify-between mt-5">
+        <div className="h-150px] w-[150px]">
+          <Image
+            src="https://i.postimg.cc/nLFKWJ5z/Rectangle-1.png"
+            alt="hero image"
+            width={220}
+            height={120}
+            className="h-full w-full"
+          />
+        </div>
+        <div className="hidden sm:flex sm:gap-x-12">
+          <Link
+            href="#"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Home
+          </Link>
+          <Link
+            href="#feature-test"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Tests
+          </Link>
+          <Link
+            href="#about-us"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            About Us
+          </Link>
+          {/* <Link
+            href="#"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Contact Us
+          </Link> */}
+          
+        </div>
+        <div className="flex justify-center">
           <Button asChild>
-            <Link href="/sign-up">Get started</Link>
+            <Link href="/sign-in">Login</Link>
           </Button>
         </div>
       </div>
-    </header>
+    </div>
   );
 }

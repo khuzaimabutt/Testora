@@ -12,7 +12,7 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: { DEFAULT: "1.25rem", sm: "2rem" },
+      padding: "2rem",
       screens: {
         "2xl": "1400px",
       },
@@ -52,20 +52,6 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        mark: {
-          DEFAULT: "hsl(var(--mark))",
-          foreground: "hsl(var(--mark-foreground))",
-          soft: "hsl(var(--mark-soft))",
-        },
-        pass: {
-          DEFAULT: "hsl(var(--pass))",
-          soft: "hsl(var(--pass-soft))",
-        },
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
