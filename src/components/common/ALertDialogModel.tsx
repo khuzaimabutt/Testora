@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "../ui/button";
 import { deleteTest } from "@/actions/test";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ALertDialogModel({
   text,
@@ -24,11 +25,15 @@ export default function ALertDialogModel({
   id: number;
   handle?: () => void;
 }) {
+  const { toast } = useToast();
   async function handleDelete() {
     console.log(id);
     if (id) {
       try {
-        await deleteTest(id);
+        const res = await deleteTest(id);
+        if (res?.error) {
+          toast({ title: res.error, description: "This sample test cannot be deleted in the demo." });
+        }
       } catch (error) {
         console.log(error);
         console.error(error);

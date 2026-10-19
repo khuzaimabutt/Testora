@@ -11,9 +11,11 @@ const stripePromise = loadStripe(
 export default function Checkout({
   testDetails,
   clientSecret,
+  showTestCard = false,
 }: {
   testDetails: Test;
   clientSecret: any;
+  showTestCard?: boolean;
 }) {
   const options = {
     clientSecret: clientSecret,
@@ -21,7 +23,7 @@ export default function Checkout({
 
   return (
     <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm testDetails={testDetails} />
+      <CheckoutForm testDetails={testDetails} showTestCard={showTestCard} />
     </Elements>
   );
 }

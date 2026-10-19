@@ -5,6 +5,15 @@ import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 import { permanentRedirect, redirect } from "next/navigation";
 import OpenAI from "openai";
+import {
+  isDemoUser,
+  isSeededTestId,
+  consumeDemoAiUse,
+  DEMO_DISABLED_MESSAGE,
+} from "@/lib/demo";
+
+const DAILY_LIMIT_MESSAGE =
+  "Daily AI limit reached for the demo account. It resets tomorrow.";
 
 let _openai: OpenAI | null = null;
 const getOpenAI = () => {
@@ -193,6 +202,11 @@ export async function submitAiTest(attemptedQuestions: string, testId: number) {
       return "missing api key";
     }
 
+    const { userId: callerId } = auth();
+    if (isDemoUser(callerId) && !(await consumeDemoAiUse(callerId as string))) {
+      return { limited: true, message: DAILY_LIMIT_MESSAGE };
+    }
+
     console.log(`Evaluate Questions ${attemptedQuestions}`);
 
     const prompt = `Please evaluate the user's attempted test questions and provide the correct answer if the user's answer is incorrect.\n\n:${attemptedQuestions}`;
@@ -281,6 +295,11 @@ export async function createAiTest(prevState: any, formData: FormData) {
   try {
     if (!process.env.OPENAI_API_KEY) {
       return "missing api key";
+    }
+
+    const { userId: callerId } = auth();
+    if (isDemoUser(callerId) && !(await consumeDemoAiUse(callerId as string))) {
+      return DAILY_LIMIT_MESSAGE;
     }
 
     const test = formData.get("test");
@@ -468,7 +487,10 @@ export async function updateTest({
 }
 
 export async function deleteTest(id: number) {
-  console.log(id);
+  const { userId: callerId } = auth();
+  if (isDemoUser(callerId) && isSeededTestId(Number(id))) {
+    return { error: DEMO_DISABLED_MESSAGE };
+  }
   try {
     await db.question.deleteMany({
       where: {

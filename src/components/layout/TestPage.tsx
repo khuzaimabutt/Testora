@@ -5,6 +5,7 @@ import { Progress } from "../ui/progress";
 import { useFormState, useFormStatus } from "react-dom";
 import { Loader2, Send } from "lucide-react";
 import { submitAiTest, submitTestResult } from "@/actions/test";
+import { useToast } from "@/components/ui/use-toast";
 
 type Question = {
   id: number;
@@ -58,6 +59,7 @@ const TestPage: React.FC<TestPageProps> = ({
   title,
   testId,
 }) => {
+  const { toast } = useToast();
   const [time, setTime] = useState(0);
   const [progress, setProgress] = useState(0);
   const [attemptedQuestions, setAttemptedQuestions] = useState<
@@ -267,6 +269,13 @@ const TestPage: React.FC<TestPageProps> = ({
             action={async () => {
               const prompt = handleSubmit();
               const result = await submitAiTest(prompt, testId);
+              if (result && (result as any).limited) {
+                toast({
+                  title: "Daily AI limit reached",
+                  description: (result as any).message,
+                });
+                return;
+              }
 
               // const gotScore = result?.reduce((total: number, question: any) => total + question.score, 0);
               const totalCorrectAnswers = result?.questions?.filter(

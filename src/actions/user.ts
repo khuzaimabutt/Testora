@@ -2,6 +2,7 @@
 import { db } from "@/lib/db";
 import { auth, clerkClient, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { isDemoUser, DEMO_DISABLED_MESSAGE } from "@/lib/demo";
 
 export async function getRole() {
   const { userId } = auth();
@@ -24,6 +25,9 @@ export async function createUser(
   location: string,
   mobile: string
 ) {
+  if (isDemoUser(auth().userId)) {
+    redirect("/dashboard");
+  }
   console.log(name);
   const user = await currentUser();
   const { userId } = auth();
@@ -159,6 +163,9 @@ export async function getRecentUsers() {
 //
 
 export async function deleteUser(id: string) {
+  if (isDemoUser(auth().userId) || isDemoUser(id)) {
+    return { error: DEMO_DISABLED_MESSAGE };
+  }
   try {
     // Delete all payments related to the user
     await db.payment.deleteMany({
@@ -228,6 +235,9 @@ export async function deleteUser(id: string) {
 
 
 export async function deleteInstructor(id: string) {
+  if (isDemoUser(auth().userId) || isDemoUser(id)) {
+    return { error: DEMO_DISABLED_MESSAGE };
+  }
   try {
     // Get all tests related to the instructor
     const tests = await db.test.findMany({

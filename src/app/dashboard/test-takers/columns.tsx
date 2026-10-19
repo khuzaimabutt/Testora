@@ -28,6 +28,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
 // This type is used to define the shape of our data.
@@ -131,6 +132,7 @@ function TestTakerActionCell({ row }: { row: { original: TestTaker } }) {
   const data = row.original;
   const [opens, setOpens] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
   return (
         <>
           {/* <DropdownMenu>
@@ -167,7 +169,10 @@ function TestTakerActionCell({ row }: { row: { original: TestTaker } }) {
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction onClick={async () => {
                   setIsLoading(true);
-                  await deleteUser(data.id as string);
+                  const res = await deleteUser(data.id as string);
+                  if (res?.error) {
+                    toast({ title: res.error });
+                  }
                   setIsLoading(false);
                 }}>Continue</AlertDialogAction>
               </AlertDialogFooter>

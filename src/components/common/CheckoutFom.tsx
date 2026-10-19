@@ -18,7 +18,13 @@ import {
 } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
-const CheckoutForm = ({ testDetails }: { testDetails: any }) => {
+const CheckoutForm = ({
+  testDetails,
+  showTestCard = false,
+}: {
+  testDetails: any;
+  showTestCard?: boolean;
+}) => {
   console.log(testDetails?.price);
 
   const stripe = useStripe();
@@ -93,6 +99,13 @@ const CheckoutForm = ({ testDetails }: { testDetails: any }) => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                {showTestCard && (
+                  <div className="mb-4 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+                    Demo payment (test mode, no real charge). Use card{" "}
+                    <span className="font-mono font-semibold">4242 4242 4242 4242</span>
+                    , any future expiry date, any CVC and any postcode.
+                  </div>
+                )}
                 <PaymentElement />
                 <div className="mt-6 flex items-center justify-between">
                   <p className="text-sm font-medium text-gray-900">Total</p>

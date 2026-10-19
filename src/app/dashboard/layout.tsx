@@ -2,6 +2,7 @@ import { getRole } from "@/actions/user";
 import Sidebar from "@/components/layout/Sidebar";
 import Topnav from "@/components/layout/Topnav";
 import { currentUser } from "@clerk/nextjs";
+import { isDemoUser } from "@/lib/demo";
 
 import { ReactNode } from "react";
 
@@ -21,7 +22,17 @@ export default async function layout({
        */}
        {/* <DashboardPage /> */}
        
-        <div className="px-10 max-sm:px-4">{children}</div>
+        <div className="px-10 max-sm:px-4">
+          {isDemoUser(user?.id) && (
+            <div
+              role="status"
+              className="mb-6 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+            >
+              You are using the demo account. Changes reset every night.
+            </div>
+          )}
+          {children}
+        </div>
     </div>
   );
 }

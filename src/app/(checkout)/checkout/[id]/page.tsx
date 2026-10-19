@@ -5,6 +5,7 @@ import { Test } from "@/types/types";
 import stripeapi from "@/actions/stripe";
 import { currentUser } from "@clerk/nextjs";
 import { getUserById } from "@/actions/user";
+import { isDemoUser } from "@/lib/demo";
 
 const fetchPaymentIntent = async (
   description: string,
@@ -56,7 +57,11 @@ export default async function page({ params }: any) {
 
   return (
     <div>
-      <Checkout clientSecret={clientSecret} testDetails={testDetails} />
+      <Checkout
+        clientSecret={clientSecret}
+        testDetails={testDetails}
+        showTestCard={isDemoUser(user?.id)}
+      />
     </div>
   );
 }

@@ -235,6 +235,9 @@ export default function Chat() {
                           name="test"
                         />
                         <SubmitButton />
+                        {typeof state === "string" && state.startsWith("Daily AI limit") && (
+                          <p className="mt-2 text-sm text-red-600">{state}</p>
+                        )}
                       </form>
                     </div>
                   </div>

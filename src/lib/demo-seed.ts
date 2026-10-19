@@ -1,5 +1,5 @@
 import type { PrismaClient } from "@prisma/client";
-import { DEMO_TEST_ID_START, DEMO_TEST_ID_END } from "./demo";
+import { DEMO_TEST_ID_START, DEMO_TEST_ID_END } from "./demo-config";
 
 // Sample content for the two demo accounts. Safe to run repeatedly: it removes
 // everything the demo users own (and the seeded test range) and recreates it.
