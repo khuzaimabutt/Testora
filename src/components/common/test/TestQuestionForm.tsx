@@ -117,7 +117,6 @@ export default function TestQuestionForm({
   };
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     if (editingQuestionIndex !== null && testDetails?.questions) {
       const updatedQuestions = [...testDetails.questions];
       updatedQuestions[editingQuestionIndex] = {

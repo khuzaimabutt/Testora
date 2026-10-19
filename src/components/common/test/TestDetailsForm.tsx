@@ -97,7 +97,6 @@ export default function TestDetailsForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     setTestDetails({ ...testDetails, ...values });
     nextStep();
     // createTest({ Data: values });

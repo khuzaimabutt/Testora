@@ -23,7 +23,6 @@ import ALertDialogModel from "./ALertDialogModel";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { publishTest } from "@/actions/test";
-import { redirect } from "next/dist/server/api-utils";
 
 interface User {
   id: string;
@@ -38,7 +37,6 @@ interface User {
 
 function SubmitButton({variant, text}: {variant: string, text:string}) {
   const { pending } = useFormStatus();
-  console.log(variant)
   return (
     <Button disabled={pending} variant={variant === 'secondary' ? 'secondary' : 'default'}  type="submit" className="">
       {!pending ? (

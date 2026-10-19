@@ -116,7 +116,6 @@ export default function TestForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     if (testDetails?.id && testDetails?.questions) {
       const updatedTestDetails: TestDetails = {
         ...values,

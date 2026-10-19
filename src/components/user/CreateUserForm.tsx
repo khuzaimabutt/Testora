@@ -85,7 +85,6 @@ export default function CreateUserForm({
   fname: String;
   lname: String;
 }) {
-  console.log(fname, lname);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {name:fname?fname+" "+lname:""},
@@ -93,7 +92,6 @@ export default function CreateUserForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     createUser(values.name, values.role, values.location, values.mobile);
   }
 
