@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import DemoButtons from "@/components/common/DemoButtons";
 
 export default function Hero() {
   return (
@@ -17,10 +18,11 @@ export default function Hero() {
           support, and unlimited possibilities await!
         </p>
 
-        <div className="mt-10">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           <Button asChild>
             <Link href="/sign-up">Get Started</Link>
           </Button>
+          <DemoButtons />
         </div>
       </div>
       <div className="col-span-12 lg:col-span-6">
