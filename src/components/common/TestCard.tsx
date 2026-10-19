@@ -105,13 +105,13 @@ export default function TestCard({
   const start = canStartTest ? StartTest(startAt) : false;
 
   return (
-    <Card>
+    <Card className="lift">
       <CardHeader>
         <div className="flex justify-between items-center">
           <CardTitle className="line-clamp-1 leading-1 mr-1">
             {title}
             <span
-              className={`ml-2 align-middle text-xs font-medium ${
+              className={`fade-in ml-2 align-middle text-xs font-medium ${
                 published ? "text-green-700" : "text-gray-500"
               }`}
             >

@@ -1,5 +1,6 @@
 import { getAllPublishedTests,} from "@/actions/test";
 import TestCard from "../common/TestCard";
+import Reveal from "../motion/Reveal";
 
 const FeatureTest = async () => {
   const tests = await getAllPublishedTests();
@@ -28,8 +29,8 @@ const FeatureTest = async () => {
             if ("student" === "student" && !test.published) return;
             if (index > 5) return;
             return (
+              <Reveal key={test.id} delay={(index % 3) * 90}>
               <TestCard
-                key={test.id}
                 id={test.id}
                 userId={test.userId}
                 title={test.title}
@@ -42,6 +43,7 @@ const FeatureTest = async () => {
                 isPurchased={false}
                 price={test.price}
               />
+              </Reveal>
             );
           })}
         </div>

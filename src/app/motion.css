@@ -1,0 +1,187 @@
+/* ---------------------------------------------------------------------------
+   Motion. Transform and opacity only. Timings: hover 200ms, entrance 600ms.
+   Everything that moves sits inside prefers-reduced-motion: no-preference, so
+   reduced-motion users get the final state with no movement.
+   --------------------------------------------------------------------------- */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-hover: 200ms;
+  --t-enter: 600ms;
+}
+
+/* Answer highlight, shown for everyone (no movement without the media query) */
+.answer-option {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+}
+.answer-option::before {
+  content: "";
+  position: absolute;
+  inset: -3px -8px;
+  z-index: -1;
+  border-radius: 6px;
+  background: hsl(var(--primary) / 0.12);
+  opacity: 0;
+}
+.answer-option:has(input:checked)::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveal (components/motion/Reveal.tsx) */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition: opacity var(--t-enter) var(--ease-out),
+      transform var(--t-enter) var(--ease-out);
+  }
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* CSS-only entrance for the hero, so text never waits for JavaScript */
+  .enter {
+    animation: enter var(--t-enter) var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Slow hero photo zoom */
+  .hero-zoom {
+    transform: scale(1.02);
+    animation: hero-zoom 14s var(--ease-out) both;
+  }
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+
+  /* Test cards lift on hover */
+  .lift {
+    transition: transform var(--t-hover) var(--ease-out);
+  }
+  .lift:hover {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  /* Live / Draft label fades in */
+  .fade-in {
+    animation: fade-in var(--t-enter) var(--ease-out) both;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Phone menu links appear one after another */
+  .stagger-item {
+    animation: enter 450ms var(--ease-out) both;
+    animation-delay: calc(120ms + var(--i, 0) * 70ms);
+  }
+
+  /* Answer highlight settles in */
+  .answer-option::before {
+    transform: scale(0.96);
+    transition: opacity var(--t-hover) var(--ease-out),
+      transform var(--t-hover) var(--ease-out);
+  }
+  .answer-option:has(input:checked)::before {
+    transform: scale(1);
+  }
+
+  /* Time left pulses in the last five minutes */
+  .time-pulse {
+    animation: time-pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes time-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.45;
+    }
+  }
+
+  /* Pass celebration: small confetti burst, plays once */
+  .confetti-bit {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 8px;
+    height: 12px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confetti 1.4s var(--ease-out) both;
+    animation-delay: var(--cd, 0ms);
+  }
+  @keyframes confetti {
+    0% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(var(--cx, 0px), var(--cy, 90px), 0)
+        rotate(var(--cr, 240deg));
+    }
+  }
+  .pass-pop {
+    animation: pass-pop 600ms var(--ease-out) 300ms both;
+  }
+  @keyframes pass-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Shimmer placeholder (components/ui/skeleton.tsx) */
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translate3d(-100%, 0, 0);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--background) / 0.65),
+      transparent
+    );
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    to {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti-bit {
+    display: none;
+  }
+}

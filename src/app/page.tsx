@@ -3,6 +3,7 @@ import FeatureTest from "@/components/layout/FeatureTest";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
 import HomeNav from "@/components/layout/HomeNav";
+import Reveal from "@/components/motion/Reveal";
 
 export default function Home() {
   return (
@@ -14,13 +15,19 @@ export default function Home() {
         <Hero />
       </section>
       <section id="about-us" className="sm:px-16 px-8 sm:py-24 py-12">
-        <About />
+        <Reveal>
+          <About />
+        </Reveal>
       </section >
       <section id='feature-test' className="sm:px-16 px-8 sm:py-24 py-12">
-        <FeatureTest />
+        <Reveal>
+          <FeatureTest />
+        </Reveal>
         </section>
       <section>
-        <Footer />
+        <Reveal>
+          <Footer />
+        </Reveal>
       </section>
     </main>
   );

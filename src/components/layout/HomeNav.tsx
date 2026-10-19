@@ -56,8 +56,13 @@ export default function HomeNav() {
             </SheetTrigger>
             <SheetContent side="right">
               <nav className="grid gap-6 mt-8 text-lg font-semibold">
-                {navLinks.map((link) => (
-                  <Link key={link.label} href={link.href}>
+                {navLinks.map((link, i) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="stagger-item"
+                    style={{ "--i": i } as React.CSSProperties}
+                  >
                     {link.label}
                   </Link>
                 ))}
