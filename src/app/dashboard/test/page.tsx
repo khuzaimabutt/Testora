@@ -31,21 +31,26 @@ export default async function CreateTestPage() {
   return (
     <div>
       <div className="flex flex-col justify-between pr-4">
-        <div className="flex max-sm:flex-col justify-between">
-          <h1 className="text-2xl font-semibold mb-2 sm:mb-10">Test List</h1>
+        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div>
+            <p className="eyebrow">{role === "instructor" ? "Your papers" : "Catalogue"}</p>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
+              {role === "instructor" ? "Tests you have written" : "Browse tests"}
+            </h1>
+          </div>
           {
             (role === "instructor" && (
-              <div className="space-x-2">
+              <div className="flex flex-wrap gap-2">
                 <Button asChild>
                   <Link href="/dashboard/chat">
-                    <Plus size={24} />
-                    Create AI Test
+                    <Plus size={18} />
+                    Create with AI
                   </Link>
                 </Button>
-                <Button asChild variant="secondary">
+                <Button asChild variant="outline">
                   <Link href="/dashboard/test/create-test">
-                    <Plus size={24} />
-                    Create Test
+                    <Plus size={18} />
+                    Create manually
                   </Link>
                 </Button>
               </div>

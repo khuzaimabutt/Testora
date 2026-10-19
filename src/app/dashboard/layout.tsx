@@ -21,7 +21,7 @@ export default async function layout({
        */}
        {/* <DashboardPage /> */}
        
-        <div className="px-10 max-sm:px-4">{children}</div>
+        <main id="main" className="mx-auto max-w-7xl px-4 pb-20 sm:px-10">{children}</main>
     </div>
   );
 }
