@@ -156,7 +156,7 @@ const TestPage: React.FC<TestPageProps> = ({
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 pt-40 sm:pt-28">
       <div className="grid gap-6 mb-20 mt-10">
         <h1 className="text-3xl font-semibold mb-1">{title}</h1>
         <p className="mb-8">{description}</p>
@@ -245,8 +245,8 @@ const TestPage: React.FC<TestPageProps> = ({
         ))}
       </div>
       <div className="fixed top-16 left-0 right-0 shadow-lg bg-white  z-50 py-2 px-4">
-        <div className="flex  items-center space-x-4 w-full">
-          <Progress value={progress} className="max-w-4xl" />
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full">
+          <Progress value={progress} className="w-full sm:max-w-4xl" />
           <div className="flex-1 flex flex-col justify-center">
             <p className="text-gray-600">{`Time elapsed: ${Math.floor(
               time / 3600
