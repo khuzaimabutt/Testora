@@ -21,11 +21,11 @@ export default async function About() {
       <div className="flex-1 flex flex-col gap-6 lg:max-w-lg">
         <h2 className="text-4xl font-semibold font-palanquin capitalize">
           Empower Your Exam Preparation with
-          <span className="text-primary"> Certi - Ai </span>
+          <span className="text-primary"> CertiAI </span>
            
         </h2>
         <p className="text-gray-500">
-          At <strong>Cert-Ai</strong>, we believe that practice makes perfect.
+          At <strong>CertiAI</strong>, we believe that practice makes perfect.
           We offer a dynamic online environment where students can sharpen their
           skills and prepare for their exams with confidence. Our platform
           allows teachers to create and upload custom tests, which students can
@@ -36,11 +36,11 @@ export default async function About() {
         <p className="mt-4 text-gray-500">
           For educators, our platform provides a versatile tool to support your
           teaching goals. Upload tests, track student progress, and offer
-          targeted feedback—all from one intuitive interface.
+          targeted feedback. All from one intuitive interface.
         </p>
 
         <p className="mt-4  text-gray-500">
-          Join us today and transform how you prepare for your exams—because
+          Join us today and transform how you prepare for your exams. Because
           when you practice with purpose, you succeed with confidence.
         </p>
         <div className="mb-4">

@@ -3,7 +3,6 @@ import TestCard from "../common/TestCard";
 
 const FeatureTest = async () => {
   const tests = await getAllPublishedTests();
-  console.log(tests);
   return (
     <section id="tests" className="max-container max-sm:mt-12">
       <div className="flex flex-col gap-5">
@@ -20,6 +19,11 @@ const FeatureTest = async () => {
           className="grid mt-16 lg:grid-cols-3 md:grid-cols-2
         grid-cols-1 gap-14"
         >
+          {tests?.filter((t) => t.published).length === 0 && (
+            <p className="text-gray-500 col-span-full">
+              No published tests yet. Check back soon.
+            </p>
+          )}
           {tests?.map((test, index) => {
             if ("student" === "student" && !test.published) return;
             if (index > 5) return;

@@ -17,8 +17,8 @@ const Footer = () => {
             height={100}
           />
           <p className="text-black-500 pt-4 md:mt-0 md:col-span-1 ">
-            Certi-AI is Pakistan’s Largest Online Mock Test Portal
-            Connecting Teachers and Students within & outside the country.
+            CertiAI is an online mock test portal
+            Connecting teachers and students in Pakistan and beyond.
           </p>
         </div>
         <div className="flex flex-wrap justify-between md:col-span-4 gap-8">
@@ -61,7 +61,7 @@ const Footer = () => {
       <div className="mt-8">
         <div className="max-w-screen-xl mx-auto flex justify-between items-center flex-wrap">
           <p className="text-black-500 text-sm">
-            © 2024 Certi-AI, Inc. All rights reserved.
+            © {new Date().getFullYear()} CertiAI, Inc. All rights reserved.
           </p>
           <div className="flex items-center space-x-4">
             {socials.map((social) => (
