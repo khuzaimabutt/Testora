@@ -251,6 +251,16 @@ const TestPage: React.FC<TestPageProps> = ({
             <p className="text-gray-600">{`Time elapsed: ${Math.floor(
               time / 3600
             )} hr ${Math.floor((time % 3600) / 60)} min ${time % 60} sec`}</p>
+            {testTime - time <= 300 && (
+              <p className="text-red-600 font-semibold">
+                {`Time left: ${Math.floor((testTime - time) / 60)}:${String(
+                  (testTime - time) % 60
+                ).padStart(2, "0")}`}
+              </p>
+            )}
+            <p className="text-gray-600">
+              {`${attemptedQuestions.length} of ${questions.length} answered`}
+            </p>
             <p className="text-gray-600">Duration: {duration} min</p>
           </div>
           <form

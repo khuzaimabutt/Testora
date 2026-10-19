@@ -110,7 +110,16 @@ export default function TestCard({
     <Card>
       <CardHeader>
         <div className="flex justify-between items-center">
-          <CardTitle className="line-clamp-1 leading-1 mr-1">{title}</CardTitle>
+          <CardTitle className="line-clamp-1 leading-1 mr-1">
+            {title}
+            <span
+              className={`ml-2 align-middle text-xs font-medium ${
+                published ? "text-green-700" : "text-gray-500"
+              }`}
+            >
+              {published ? "Live" : "Draft"}
+            </span>
+          </CardTitle>
           {role === "instructor" && (
             <form action={formAction}>
               <input type="hidden" name="id" value={id} />

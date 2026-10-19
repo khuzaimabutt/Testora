@@ -54,6 +54,28 @@ export default async function CreateTestPage() {
         
         </div>
         {role && (
+          <div className="grid grid-cols-3 gap-4 mb-6 text-center">
+            <div className="rounded-md border p-3">
+              <p className="text-2xl font-semibold">{tests.length}</p>
+              <p className="text-sm text-gray-600">
+                {role === "instructor" ? "Total tests" : "Available tests"}
+              </p>
+            </div>
+            <div className="rounded-md border p-3">
+              <p className="text-2xl font-semibold">
+                {tests.filter((t) => t.published).length}
+              </p>
+              <p className="text-sm text-gray-600">Live</p>
+            </div>
+            <div className="rounded-md border p-3">
+              <p className="text-2xl font-semibold">
+                {tests.filter((t) => !t.published).length}
+              </p>
+              <p className="text-sm text-gray-600">Draft</p>
+            </div>
+          </div>
+        )}
+        {role && (
           <div className="">
             <div>
               <FilterTest
