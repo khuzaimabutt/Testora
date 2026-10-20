@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <div className="grid grid-cols-12  mx-auto gap-8">
       <div className="max-w-2xl pt-28 sm:pt-40 lg:pt-60 col-span-12 lg:col-span-6 px-6 mx-auto">
-        <h1 className="enter text-4xl xl:text-6xl font-bold">
+        <h1 className="enter font-heading text-4xl xl:text-6xl font-bold">
           The Best Way For Your Learning
         </h1>
         <p className="enter text-gray-500 mt-6" style={{ "--d": "80ms" } as React.CSSProperties}>
