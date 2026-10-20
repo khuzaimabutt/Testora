@@ -1,4 +1,5 @@
 import About from "@/components/layout/About";
+import BuilderShowcase from "@/components/layout/BuilderShowcase";
 import CallToAction from "@/components/layout/CallToAction";
 import TrustRow from "@/components/layout/TrustRow";
 import FeatureTest from "@/components/layout/FeatureTest";
@@ -26,6 +27,11 @@ export default function Home() {
           <About />
         </Reveal>
       </section >
+      <section className="px-6 sm:py-12 py-8">
+        <Reveal>
+          <BuilderShowcase />
+        </Reveal>
+      </section>
       <section id='feature-test' className="sm:px-16 px-8 sm:py-24 py-12">
         <Reveal>
           <FeatureTest />

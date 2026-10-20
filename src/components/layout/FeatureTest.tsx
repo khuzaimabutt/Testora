@@ -17,8 +17,7 @@ const FeatureTest = async () => {
         </p>
 
         <div
-          className="grid mt-16 lg:grid-cols-3 md:grid-cols-2
-        grid-cols-1 gap-14"
+          className="flex gap-5 mt-16 overflow-x-auto snap-x snap-mandatory pb-4 -mx-8 px-8 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-14 md:overflow-visible"
         >
           {tests?.filter((t) => t.published).length === 0 && (
             <p className="text-gray-500 col-span-full">
@@ -29,7 +28,7 @@ const FeatureTest = async () => {
             if ("student" === "student" && !test.published) return;
             if (index > 5) return;
             return (
-              <Reveal key={test.id} delay={(index % 3) * 90}>
+              <Reveal key={test.id} delay={(index % 3) * 90} className="w-[82%] shrink-0 snap-start md:w-auto">
               <TestCard
                 id={test.id}
                 userId={test.userId}
