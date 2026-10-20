@@ -28,8 +28,8 @@ export default function Hero() {
       <div className="col-span-12 lg:col-span-6">
         <div className="aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-screen overflow-hidden rounded-3xl shadow-2xl">
         <HeroMedia
-          src="/desk-hero.png"
-          alt="Laptop, notebook and coffee on a wooden desk"
+          src="/hero-photo.jpg"
+          alt="Laptop, notebook and a cup of coffee on a wooden table in a café"
         />
         </div>
       </div>
