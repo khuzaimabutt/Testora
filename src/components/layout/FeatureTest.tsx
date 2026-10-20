@@ -7,7 +7,7 @@ const FeatureTest = async () => {
   return (
     <section id="tests" className="max-container max-sm:mt-12">
       <div className="flex flex-col gap-5">
-        <p className="text-4xl font-bold font-palanquin">
+        <p className="text-4xl font-bold font-heading">
           Our <span className="text-primary">Popular</span> Tests
         </p>
         <p className="lg:max-w-lg text-gray-500">

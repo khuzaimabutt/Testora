@@ -19,7 +19,7 @@ export default async function About() {
       className="grid lg:grid-cols-2 gap-10 w-full max-container "
     >
       <div className="flex-1 flex flex-col gap-6 lg:max-w-lg">
-        <h2 className="text-4xl font-semibold font-palanquin capitalize">
+        <h2 className="text-4xl font-semibold font-heading capitalize">
           Empower Your Exam Preparation with
           <span className="text-primary"> CertiAI </span>
            
