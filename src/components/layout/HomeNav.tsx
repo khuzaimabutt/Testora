@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import ScrolledBar from "./ScrolledBar";
 import {
   Sheet,
   SheetContent,
@@ -17,8 +18,8 @@ const navLinks = [
 
 export default function HomeNav() {
   return (
-    <div className="pl-0 px-8 z-50 absolute xl:w-1/2 w-full">
-      <div className="flex items-center justify-between mt-5">
+    <ScrolledBar>
+      <div className="flex items-center justify-between px-6 sm:px-10 py-4">
         <div className="h-10 w-[150px]">
           <Image
             src="https://i.postimg.cc/nLFKWJ5z/Rectangle-1.png"
@@ -71,6 +72,6 @@ export default function HomeNav() {
           </Sheet>
         </div>
       </div>
-    </div>
+    </ScrolledBar>
   );
 }
